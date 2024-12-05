@@ -1,5 +1,5 @@
 import { errorHandler } from "../utils/error.js";
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 
 export const test = (req, res) => {
   res.json({ message: 'API is working' });
@@ -13,7 +13,7 @@ export const updateUser = async (req, res, next) => {
     if(req.body.password.length < 6){
       return next(errorHandler(400, 'Password must be at least 6 characters long'));
     }
-    req.body.password = await bcrypt.hash(req.body.password, 10);
+    req.body.password = await bcryptjs.hash(req.body.password, 10);
   }
   if (req.body.username){
     if(req.body.username.length < 7 || req.body.username.length > 20){
@@ -28,6 +28,7 @@ export const updateUser = async (req, res, next) => {
     if(!req.body.username.match(/^[a-zA-Z0-9]+$/)){
       return next(errorHandler(400, 'Username can only contain letters and numbers'));
     }
+  } 
     try {
       const updateUser = await User.findByIdAndUpdate(req.params.userId, {
         $set: {
@@ -42,5 +43,4 @@ export const updateUser = async (req, res, next) => {
       } catch (error) {
         next(error);
     }
-  }
 };

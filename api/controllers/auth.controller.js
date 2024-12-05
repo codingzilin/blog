@@ -1,5 +1,5 @@
 import User from '../models/user.model.js';
-import bcrypt from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
 
@@ -38,7 +38,7 @@ export const signin = async (req, res, next) => {
     if (!validUser) {
       return next(errorHandler(404, 'User not found'));
     }
-    const validPassword = bcrypt.compareSync(password, validUser.password);
+    const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) {
       return next(errorHandler(400, 'Invalid password'));
     }
@@ -65,7 +65,7 @@ export const google = async (req, res, next) => {
       }).json(rest);
     } else {
       const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
-      const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
+      const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
       const newUser = new User ({
         username: name.toLowerCase().split(' ').join('') + Math.random().toString(9).slice(-4),
         email,
