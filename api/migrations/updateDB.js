@@ -1,6 +1,6 @@
 import User from '../models/user.model.js';
 
-const updateUsers = async () => {
+const updateDB = async () => {
   try {
     // Update all user documents that don't have isAdmin field
     await User.updateMany(
@@ -13,4 +13,4 @@ const updateUsers = async () => {
   }
 };
 
-export default updateUsers; 
+export default updateDB; 

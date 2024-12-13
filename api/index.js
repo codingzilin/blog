@@ -4,14 +4,14 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js'; //you can define a different name for the route
 import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
-import updateUsers from './migrations/updateUsers.js';
+import updateDB from './migrations/updateDB.js';
 dotenv.config();
 
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
   console.log('Connected to MongoDB');
-  updateUsers();
+  updateDB();
 })
   .catch((err) => {
   console.log(err);
