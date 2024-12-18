@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js'; //you can define a different name for the route
 import authRoutes from './routes/auth.route.js';
+import postRoutes from './routes/post.route.js';
 import cookieParser from 'cookie-parser';
 import updateDB from './migrations/updateDB.js';
 dotenv.config();
@@ -28,6 +29,7 @@ app.listen(3000, () => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/post', postRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
