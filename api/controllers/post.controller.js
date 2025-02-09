@@ -43,7 +43,7 @@ export const getposts = async (req, res, next) => {
         ],
       }),
     })
-      .sort({ updateAt: sortDirection })
+      .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 

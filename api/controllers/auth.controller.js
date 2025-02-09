@@ -10,12 +10,12 @@ export const signup = async (req, res, next) => {
     next(errorHandler(400, 'All fields are required'));
   }
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
+  const hashedPassword = bcryptjs.hashSync(password, 10);
   
   const newUser = new User({ 
     username,
     email,
-    password,
+    password: hashedPassword,
   });
 
   try {
@@ -45,7 +45,7 @@ export const signin = async (req, res, next) => {
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin }, process.env.JWT_SECRET);
     
-    const { password: pass, ...user } = validUser._doc; //remove password from user object 
+    const { password: pass, ...rest } = validUser._doc; //remove password from user object 
 
     res.status(200).cookie('access_token', token, {
       httpOnly: true}).json(rest);
