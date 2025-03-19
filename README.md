@@ -23,3 +23,6 @@ This is a full-stack blog application built with React, Redux, Express, and Mong
 - **MongoDB**: A NoSQL database for storing user and blog data.
 
 ## Project Structure
+
+![Uploading image.png…]()
+
