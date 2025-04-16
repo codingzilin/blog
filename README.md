@@ -24,6 +24,8 @@ This is a full-stack blog application built with React, Redux, Express, and Mong
 
 ## Project Structure
 
+![image](https://github.com/user-attachments/assets/93f650b1-50bd-4dba-b9a8-51c9ba902bc8)
+
 <img width="1512" alt="image" src="https://github.com/user-attachments/assets/80f54c92-622f-4e8a-9d2d-23e08832e3b3" />
 
 
